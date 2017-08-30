@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form #f="ngForm" (submit)="onSubmit();">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" class="form-control" ngModel #email="ngModel" required email>
+          <div *ngIf="!email.valid && email.touched">Please provide correct email</div>
+        </div>
+
+        <div class="form-group">
+          <label for="subscription">Subscription</label>
+          <select id="subscription" name="subscription" class="form-control" [ngModel]="'advanced'">
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" ngModel #password="ngModel" required>
+          <div *ngIf="!password.valid && password.touched">Please provide not empty password</div>
+        </div>
+
+        <MaS-inner-component></MaS-inner-component>
+
+        <custom-input name="someValue" ngModel required>Write in this wrapper control:</custom-input>
+
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" name="checkbox" class="form-check-input" ngModel #checkbox="ngModel">
+            Show/hide input below
+          </label>
+        </div>
+
+        <custom-input *ngIf="checkbox.value" name="someValueNgIf" ngModel>Write in this wrapper control:</custom-input>
+
+        <br/>
+        <div *ngIf="!f.valid && f.touched">Please fill whole form</div>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+      </form>
+
+      {{f.value | json}}
+    </div>
+  </div>
+</div>

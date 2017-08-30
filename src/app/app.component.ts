@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'MaS';
+  showMobileNavigation = false;
+
+  onNavClick() {
+    this.showMobileNavigation = false;
+  }
+
+  onNavButtonClick() {
+    this.showMobileNavigation = !this.showMobileNavigation;
+  }
 }

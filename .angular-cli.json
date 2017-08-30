@@ -18,7 +18,9 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "MaS",
+      "__comment": "../node_modules/bootstrap-v4-dev/scss/bootstrap.scss",
       "styles": [
+        "../node_modules/bootstrap-v4-dev/dist/css/bootstrap.min.css",
         "styles.scss"
       ],
       "scripts": [],

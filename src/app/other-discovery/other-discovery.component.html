@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-12">
+    <div class="MaS-class-selector"></div>
+
+    <hr/>
+
+
+    <button type="button" class="btn btn-secondary" placement="top" ngbTooltip="Tooltip on top">
+      Tooltip on top
+    </button>
+    <button type="button" class="btn btn-secondary" placement="right" ngbTooltip="Tooltip on right">
+      Tooltip on right
+    </button>
+    <button type="button" class="btn btn-secondary" placement="bottom" ngbTooltip="Tooltip on bottom">
+      Tooltip on bottom
+    </button>
+    <button type="button" class="btn btn-secondary" placement="left" ngbTooltip="Tooltip on left">
+      Tooltip on left
+    </button>
+
+    <hr/>
+
+    <input type="text" (input)="onTextValueEntered($event)"/>
+    <button type="button" class="btn btn-secondary" (click)="onApplyTextValue()">Apply</button>
+    <br/>
+
+    Applied text value: {{ appliedTextValue }}
+
+    <hr/>
+
+    <input type="text" [(ngModel)]="username">
+    <p>{{ username }}</p>
+    <button class="btn btn-secondary" (click)="onResetUsername()" [disabled]="username === ''">Reset field</button>
+    <MaS-change-test [(test)]="username"></MaS-change-test>
+
+    <hr/>
+
+    <button class="btn btn-secondary" (click)="onToggleText()">Show hidden text</button> <span *ngIf="textVisible">Hidden Text :)</span>
+
+    <ul><li *ngFor="let log of toggleLog; let i = index" [ngClass]="{highlight: log >= 5}"> {{i+1}}. {{ log }} </li></ul>
+
+    <hr/>
+    <p>Text</p>
+    <p>Just template: <ng-template>template-content</ng-template></p>
+    <p>Template with [ngIf]="true": <ng-template [ngIf]="true">template-content</ng-template></p>
+    <p>Template with id (#templ3): <ng-template #templ3>template-content</ng-template></p>
+    <p>Span with *ngIf="false; else templ3": <span *ngIf="false; else templ3"></span></p>
+
+    <hr/>
+
+    <div class="dropdown" MaSDropdownToggle>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+      <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item">Action - 1</button>
+        <button class="dropdown-item">Another Action</button>
+        <button class="dropdown-item">Something else is here</button>
+      </div>
+    </div>
+
+    <hr/>
+    Pipes 
+    <button type="button" class="btn btn-primary" (click)="onLongerSentence();">Make sentence longer</button>
+    <button type="button" class="btn btn-primary" (click)="onRefreshDate();">Refresh date</button><br/>
+    <button type="button" class="btn btn-primary" (click)="onAddToArray();">Add to array</button><br/>
+    <br/>
+
+    {{ '{{' }}sentence}}: {{sentence}}<br/>
+    {{ '{{' }}sentence | wordReverse}}: {{sentence | wordReverse}}<br/>
+    <br/>
+    {{ '{{' }}date}}: {{date}}<br/>
+    {{ '{{' }}date | date:'medium'}}: {{date | date:'medium'}}<br/>
+    <br/>
+    {{ '{{' }}data | json}}: {{data | json}}<br/>
+    {{ '{{' }}data | extractProperty:'sentence'}}: {{data | extractProperty:'sentence'}}<br/>
+    <br/>
+    Array (*ngFor="let element of array"):<br/>
+    <div class="row">
+      <div class="col-1" *ngFor="let element of array">{{element}}</div>
+    </div>
+    Array (*ngFor="let element of array | arrayReverse"):<br/>
+    <div class="row">
+      <div class="col-1" *ngFor="let element of array | arrayReverse">{{element}}</div>
+    </div>
+  </div>
+</div>
